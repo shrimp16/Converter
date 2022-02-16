@@ -1,4 +1,5 @@
 let convertedValue = document.getElementById("converted-value");
+let percentOfAnswer = document.getElementById("firstAnswer");
 let firstCoin;
 let secondCoin;
 let amount;
@@ -33,3 +34,11 @@ function getPrice(response) {
             return response.market_data.ath.usd * amount + " USD";
     }
 }
+
+$('#percent-of').click(() => {
+    let firstNumber = document.getElementById("firstNumber").value;
+    let secondNumber = document.getElementById("secondNumber").value;
+
+    percentOfAnswer.innerText = secondNumber * firstNumber / 100;
+
+})
