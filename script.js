@@ -11,12 +11,17 @@ function setup() {
     amount = document.getElementById("amount").value;
 
     if(!amount) amount = 1;
-    if(firstCoin === "select" || secondCoin === "select") alert ("Select the coins")
+    
 }
 
 $('#convert').click(() => {
 
     setup();
+
+    if(firstCoin === "select" || secondCoin === "select"){
+        alert ("Select the coins");
+        return;
+    }
 
     fetch(`https://api.coingecko.com/api/v3/coins/${firstCoin}`)
     .then(response => response.json())
@@ -39,6 +44,10 @@ $('#percent-of').click(() => {
     let firstNumber = document.getElementById("firstNumber").value;
     let secondNumber = document.getElementById("secondNumber").value;
 
+    if(!firstNumber || !secondNumber){
+        alert ("Insert the values");
+        return;
+    }
     percentOfAnswer.innerText = secondNumber * firstNumber / 100;
 
 })
