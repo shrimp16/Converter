@@ -58,3 +58,9 @@ input{
 .line {
     background-color: black;
 }
+
+.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
