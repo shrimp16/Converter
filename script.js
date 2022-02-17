@@ -4,6 +4,12 @@ let firstCoin;
 let secondCoin;
 let amount;
 
+let unitsPointer = 3;
+
+const units = [
+    "Kilometre", "Hectometre", "Decametre", "Metre", "Decimetre", "Centimetre", "Millimetre"
+]
+
 function setup() {
 
     firstCoin = document.getElementById("firstCoin").value;
@@ -50,4 +56,20 @@ $('#percent-of').click(() => {
     }
     percentOfAnswer.innerText = secondNumber * firstNumber / 100;
 
+})
+
+$('#previous').click(() => {
+    let value = document.getElementById("unitValue").value;
+    if(unitsPointer - 1 < 0) return;
+    unitsPointer--;
+    document.getElementById("unitValue").value = value / 10;
+    document.getElementById("unit").innerText = units[unitsPointer];
+})
+
+$('#next').click(() => {
+    let value = document.getElementById("unitValue").value;
+    if(unitsPointer + 1 === units.length) return;
+    unitsPointer++;
+    document.getElementById("unitValue").value = value * 10;
+    document.getElementById("unit").innerText = units[unitsPointer];
 })
